@@ -24,6 +24,8 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
 
+streamlit.stop()
+
 def get_fruitvyce_data(this_fruit_choice):
   fruityvice_response = request.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
   fruityvice_normalized = pandas.josin_normalize(fruityvice_response.json())
@@ -38,7 +40,7 @@ try:
     back_from_function = get_fruityvice_data(fruit_choice)
     streamlit.dataframe(back_from_function)
 
-streamlit.stop()
+#streamlit.stop()
 
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 #my_cur = my_cnx.cursor()
